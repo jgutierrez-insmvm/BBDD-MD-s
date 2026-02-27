@@ -16,43 +16,57 @@ JOIN language ON film.language_id = language.language_id;
 #### 2.  **Ciutats i Països:** 
 Selecciona el nom de la ciutat (`city.city`) i el nom del país al qual pertany (`country.country`).
 ```sql
-
+SELECT city.city, country.country
+FROM city
+JOIN country on city.country_id = country.country_id;
 ```
 
 #### 3.  **Adreces i Ciutats:** 
 Selecciona l'adreça (`address.address`) i el nom de la ciutat (`city.city`) de la taula `address`.
 ```sql
-
+SELECT address.address, city.city
+FROM address
+JOIN city ON address.city_id = city.city_id
 ```
 
 #### 4.  **Clients i Adreces:** 
 Selecciona el nom i cognom del client (`customer`) i la seva adreça (`address`).
 ```sql
-
+SELECT customer.first_name, customer.last_name, address.address
+FROM customer
+JOIN address ON customer.address_id = address.address_id; 
 ```
 
 #### 5.  **Empleats i Adreces:** 
 Selecciona el nom de l'empleat (`staff`) i la seva adreça.
 ```sql
-
+SELECT staff.first_name, address.address
+FROM staff
+JOIN address ON staff.address_id = address.address_id;
 ```
 
 #### 6.  **Pel·lícules en anglès:** 
 Mostra els títols de les pel·lícules, però només aquelles on l'idioma sigui 'English'.
 ```sql
-
+SELECT film.title, language.name
+FROM film
+JOIN language ON film.langugage_id = language.language_id;
 ```
 
 #### 7.  **Pagaments i Clients:** 
 Mostra la data del pagament (`payment_date`) i l'import (`amount`), juntament amb el nom complet del client que l'ha fet.
 ```sql
-
+SELECT payment.payment_date, payment.amount, customer.first_name
+FROM payment
+JOIN customer ON payment.customer_id = customer.customer_id;
 ```
 
 #### 8.  **Inventari i Pel·lícules:** 
 Mostra l'ID de l'inventari (`inventory_id`) i el títol de la pel·lícula que correspon a aquest ítem.
 ```sql
-
+SELECT film.title, inventory.inventory_id
+FROM film
+JOIN inventory ON film.film_id = inventory.film_id;
 ```
 
 #### 9.  **Lloguers i Empleats:** 
