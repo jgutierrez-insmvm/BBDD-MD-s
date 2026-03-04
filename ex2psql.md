@@ -72,7 +72,9 @@ JOIN inventory ON film.film_id = inventory.film_id;
 #### 9.  **Lloguers i Empleats:** 
 Mostra l'ID del lloguer (`rental_id`) i el nom de l'empleat (`staff`) que va processar el lloguer.
 ```sql
-
+SELECT rental.rental_id AS id, staff.first_name as nombre
+FROM rental
+JOIN staff ON rental.staff_id = staff.staff_id;
 ```
 
 #### 10. **Clients i Botigues:** 
@@ -80,12 +82,17 @@ Mostra el nom del client i l'ID de la botiga (`store_id`) a la qual està assign
 
 ##### *Versió 1*: Mostra només la relació del client amb la botiga
 ```sql
-
+SELECT customer.first_name as nombre, store.store_id as tienda_id
+FROM customer
+JOIN store ON customer.store_id = store.store_id
 ```
 
 ##### *Versió 2*: Mostra client, botiga i adreça
 ```sql
-
+SELECT customer.first_name AS nombre, store.store_id AS tienda_id, address.address
+FROM customer
+JOIN store ON customer.store_id = store.store_id
+JOIN address ON address.address_id = store.store_id
 ```
 
 ##### *Versió 3*: Mostra client, botiga, adreça del client i adreça de la botiga
